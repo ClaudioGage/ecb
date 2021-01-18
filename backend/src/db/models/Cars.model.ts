@@ -18,4 +18,6 @@ export class Cars extends BaseEntity{
     km: number;
     @Column()
     image: string;
+    @Column()
+    status: boolean;
 }

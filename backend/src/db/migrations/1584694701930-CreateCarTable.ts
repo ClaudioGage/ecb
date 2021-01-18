@@ -34,6 +34,11 @@ export class CreateCarTable1584694701930 implements MigrationInterface {
                     isNullable: false,
                 },
                 {
+                    name: "status",
+                    type: "boolean",
+                    isNullable: false,
+                },
+                {
                     name: "km",
                     type: "integer",
                     isNullable: false

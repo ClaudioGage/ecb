@@ -15,19 +15,20 @@ app.use(bodyParser.json({
 
 app.get('/', (req, res) => res.send('Hello World!'));
 
-app.post('/car', async (req,res) => {
+app.post('/createcar', async (req,res) => {
     const car = new Cars();
     car.id = req.body.id;
     car.make = req.body.make
-    car.model = req.body
-    car.description = req.body
-    car.km = req.body
-    car.image = req.body
+    car.model = req.body.model
+    car.description = req.body.description
+    car.km = req.body.km
+    car.image = req.body.image
+    car.status = req.body.status
     await car.save();
     res.send(car);
 });
 
-app.get('/movies', async (req,res) => {
+app.get('/getcars', async (req,res) => {
     /*
     Simple get request to obtain the object in from the instructions, 
     due to the fact that obtaining and using my own db I will hardcode the object provided in the instructions.
@@ -50,14 +51,18 @@ var hardCodedResponse = [
     "model":"Versa", 
     "estimatedate":"2021/12/01", 
     "id":3340,
-    "image":"http://3.23.108.188/cars/versa.jpg" 
+    "km":16098,
+    "image":"http://3.23.108.188/cars/versa.jpg",
+    "maintenanceStatus":false
     }, 
      { 
     "description":" motor adjustment", 
     "make":" Honda ", 
     "model":"CR-V", 
-    "estimatedate":"", 
+    "estimatedate":"2021/12/01", 
     "id":3341,
+    "km":16098,
+    "maintenanceStatus":false,
     "image":"http://3.23.108.188/cars/CR-V.jpg" 
     }, 
      {
@@ -67,40 +72,52 @@ var hardCodedResponse = [
     "estimatedate":"2020/20/12", 
     "id":3342, 
     "km":90000, 
+    "maintenanceStatus":false,
     "image":"http://3.23.108.188/cars/civic.jpg" } , 
     { 
     "description":" oil change ", 
     "make":" Volkswaguen", 
-    "model":"Tiguan", 
+    "model":"Tiguan",
+    "estimatedate":"2020/20/12",  
     "km":13500, 
-    "id":3343, 
+    "id":3343,
+    "maintenanceStatus":false, 
     "image":"http://3.23.108.188/cars/tiguan.jpg" } , 
     { 
     "description":" change of pads ", 
     "make":" Nissan ", 
     "model":"Sentra", 
+    "estimatedate":"2020/20/12", 
     "km":6000, 
-    "id":3344, 
+    "id":3344,
+    "maintenanceStatus":false, 
     "image":"http://3.23.108.188/cars/sentra.jpg" }, 
     { 
     "description":" change of pads ",  
     "make":"Volkswagen", 
     "model":"Vento", 
+    "estimatedate":"2020/20/12", 
     "km":80050, 
-    "id":3345, 
-    "image":"http://3.23.108.188/cars/vento.jpg" } , 
+    "id":3345,
+    "maintenanceStatus":false, 
+    "image":"http://3.23.108.188/cars/vento.jpg" }, 
     { 
-    "description":"Change Transmission (CVT)",  "make":"Chevrolet", 
+    "description":"Change Transmission (CVT)",  
+    "make":"Chevrolet", 
     "model":"Aveo NG", 
     "estimatedate":"2021/09/07", 
-    "km":33460, 
+    "km":33460,
+    "id":3346,
+    "maintenanceStatus":false,
     "image":"http://3.23.108.188/cars/aveo.jpg" }, 
     { 
     "description":"Change ligths",  
     "make":"Chevrolet", 
-    "model":"Spark", 
+    "model":"Spark",
+    "estimatedate":"2020/20/12",  
     "km":16098, 
-    "id":3347, 
+    "id":3347,
+    "maintenanceStatus":true, 
     "image":"http://3.23.108.188/cars/spark.jpg" } 
     ]
     
