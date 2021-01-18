@@ -46,10 +46,3 @@ export class CreateCarTable1584694701930 implements MigrationInterface {
     }
 
 }
-
-"description":" oil change ",
-"make":" Volkswaguen",
-"model":"Tiguan",
-"km":13500,
-"id":3343,
-"image":"http://3.23.108.188/cars/tiguan.jpg"
